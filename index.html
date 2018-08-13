@@ -7,10 +7,11 @@
 	<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="./public/less/main.css">
 </head>
-<body>
+<!-- 2 ng-app="yike"-->
+<body ng-app="yike">
 	<div class="viewport">
 		<!-- 侧边导航 -->
-		<div class="navs">
+		<div  ng-class="{navs:true,collapse:left}">   <!--4 导航 头部 主体 添加ng-class 把原来的class:navs 合并到ng-class里为navs:true-->
 			<dl>
 				<dt class="login">
 					<div class="avatar">
@@ -56,13 +57,13 @@
 		</div>
 		<div class="container">
 			<!-- 头部 -->
-			<div class="header">
-				<a href="javascript:;" class="menu icon-menu"></a>
+			<div ng-class="{header:true,collapse:left}">
+				<a href="javascript:;" class="menu icon-menu" ng-click="toggle();"></a>  <!--5 添加  ng-click="toggle();"-->
 				<h2>今日一刻</h2>
 				<a href="javascript:;" class="search icon-search"></a>
 			</div>
 			<!-- 主体 -->
-			<div class="body">
+			<div ng-class="{body:true,collapse:left}">
 				<div class="item">
 					<!-- 日期分类 -->
 					<div class="mark">13Aug</div>
@@ -154,6 +155,10 @@
 			</div>
 		</div>
 	</div>
-	<script src="./public/libs/toggle.js"></script>
+	<!-- <script src="./public/libs/toggle.js"></script> -->
 </body>
+<!--1 引入angularJs -->
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<!-- 3 引入app.js-->
+<script src="scripts/app.js"></script>
 </html>
