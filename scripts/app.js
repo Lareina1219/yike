@@ -1,5 +1,5 @@
 /* 1.创建app应用模块 */
-var yike = angular.module("yike",[]);
+var yike = angular.module("yike",["ctrls","ngRoute"]);  //5 ["ctrls"]应用依赖ctrls模块 controllers.js;依赖路由"ngRoute"
 /* 2.调用run方法
         该方法的作用是:当模块(1)创建好之后就可以直接执行.
         该模块依赖的是根作用域,子作用域通常是与控制器绑定的
@@ -36,3 +36,32 @@ yike.run(["$rootScope",function($rootScope){
          }
       }
 }]);
+
+//配置路由
+yike.config(["$routeProvider",function($routeProvider){
+    $routeProvider.when("/",{
+        redirectTo:"index"   //跳转到/index处理
+    }).when("/index",{
+        templateUrl:"./views/test.html",  //将要在ng-view区域显示的视图
+        controller:"index"   //调用index控制器
+    }).when("/older",{
+        templateUrl:"./views/test.html", 
+        controller:"older"
+    }).when("/author",{
+        templateUrl:"./views/test.html", 
+        controller:"author"
+    }).when("/category",{
+        templateUrl:"./views/test.html", 
+        controller:"category"
+    }).when("/favorite",{
+        templateUrl:"./views/test.html", 
+        controller:"favorite"
+    }).when("/settings",{
+        templateUrl:"./views/test.html", 
+        controller:"settings"
+    })
+}])
+//修复锚点值的改变
+yike.config(["$locationProvider",function($locationProvider){
+    $locationProvider.hashPrefix("");
+}])
