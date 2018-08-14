@@ -20,11 +20,16 @@ angular.module("ctrls",[])
     //绑定num,判定被点击标题被选中状态
     $rootScope.num=0;
 
+//5 绑定title,在标题栏显示响应的标题
+    $rootScope.title='今日一刻';
+//6 还未获取到数据显示加载图片
+    $rootScope.show = true;
+
 //3.4 获取当前时间(今天的日期)
     var now = new Date();
     //格式化时间(2018-8-14)
     now = $filter("date")(now,"yyyy-MM-dd");
-
+    $scope.now = now;
  //1 向后台发送请求
     $http({
         // url:"./api/index.php"
@@ -38,6 +43,8 @@ angular.module("ctrls",[])
         //success方法已经被淘汰,使用then方法来替代
      //}).success(function(result){ 
    }).then(function(result){
+       //已经获取到数据,加载图片不显示
+       $rootScope.show = false;
        console.log(result.data);
         $scope.posts = result.data.posts;
     })
@@ -45,34 +52,51 @@ angular.module("ctrls",[])
 .controller("older",["$scope","$rootScope","$http","$filter",function($scope,$rootScope,$http,$filter){
     // $scope.msg = '控制器获取的older数据';
     $rootScope.num=1;
-
+    $rootScope.title='往期内容';
+    $rootScope.show = true;
     //獲取時間
     var now = new Date();
     //獲取前一天的時間
     now.setDate(now.getDate()-1);
-    now = $filter("date")(now,"yyyy-MM-dd");
-    
+    now = $filter("date")(now,"yyyy-MM-dd"); 
+    $scope.now = now;
     $http({
         url:"./api/older.php",
         params:{time:now}
     }).then(function(result){
+        $rootScope.show = false;
         console.log(result.data);
         $scope.posts=result.data.posts;
     })
 }])
-.controller("author",["$scope","$rootScope",function($scope,$rootScope){
-    $scope.msg = '控制器获取的author数据';
+.controller("author",["$scope","$rootScope","$http","$filter",function($scope,$rootScope,$http,$filter){
+    // $scope.msg = '控制器获取的author数据';
     $rootScope.num=2;
+    $rootScope.title='热门作者';
+    $rootScope.show = true;
+    var now = new Date();
+    now = $filter("date")(now,"yyyy-MM-dd");
+    $scope.now = now;
+    $http({
+        url:"./api/author.php",
+        params:{time:now}
+    }).then(function(result){
+        $rootScope.show = false;
+        console.log(JSON.parse(result.data));
+        
+        $scope.authors = result.data.authors;
+    })
+
 }])
 .controller("category",["$scope","$rootScope",function($scope,$rootScope){
-    $scope.msg = '控制器获取的category数据';
+    // $scope.msg = '控制器获取的category数据';
     $rootScope.num=3;
 }])
 .controller("favorite",["$scope","$rootScope",function($scope,$rootScope){
-    $scope.msg = '控制器获取的favorite数据';
+    // $scope.msg = '控制器获取的favorite数据';
     $rootScope.num=4;
 }])
 .controller("settings",["$scope","$rootScope",function($scope,$rootScope){
-    $scope.msg = '控制器获取的settings数据';
+    // $scope.msg = '控制器获取的settings数据';
     $rootScope.num=5;
 }])

@@ -59,11 +59,15 @@
 			<!-- 头部 -->
 			<div ng-class="{header:true,collapse:left}">
 				<a href="javascript:;" class="menu icon-menu" ng-click="toggle();"></a>  <!--5 添加  ng-click="toggle();"-->
-				<h2>今日一刻</h2>
+				<h2>{{title}}</h2>
 				<a href="javascript:;" class="search icon-search"></a>
 			</div>
 			<!-- 主体 -->
 			<div ng-class="{body:true,collapse:left}">
+				<!--6 添加动态加载图 获取数据时显示 -->
+				<div ng-show="show">
+					<img src="public/images/loading.gif" >
+				</div>
 				<div ng-view></div>  <!-- 11 删li,引视图ng-view -->
 			</div>
 		</div>

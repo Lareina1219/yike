@@ -48,16 +48,16 @@ yike.config(["$routeProvider",function($routeProvider){
         templateUrl:"./views/older.html", 
         controller:"older"
     }).when("/author",{
-        templateUrl:"./views/test.html", 
+        templateUrl:"./views/author.html", 
         controller:"author"
     }).when("/category",{
-        templateUrl:"./views/test.html", 
+        templateUrl:"./views/category.html", 
         controller:"category"
     }).when("/favorite",{
-        templateUrl:"./views/test.html", 
+        templateUrl:"./views/favorite.html", 
         controller:"favorite"
     }).when("/settings",{
-        templateUrl:"./views/test.html", 
+        templateUrl:"./views/settings.html", 
         controller:"settings"
     })
 }])
