@@ -42,10 +42,10 @@ yike.config(["$routeProvider",function($routeProvider){
     $routeProvider.when("/",{
         redirectTo:"index"   //跳转到/index处理
     }).when("/index",{
-        templateUrl:"./views/test.html",  //将要在ng-view区域显示的视图
+        templateUrl:"./views/list.html",  //将要在ng-view区域显示的视图
         controller:"index"   //调用index控制器
     }).when("/older",{
-        templateUrl:"./views/test.html", 
+        templateUrl:"./views/older.html", 
         controller:"older"
     }).when("/author",{
         templateUrl:"./views/test.html", 
