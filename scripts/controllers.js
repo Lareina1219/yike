@@ -82,9 +82,10 @@ angular.module("ctrls",[])
         params:{time:now}
     }).then(function(result){
         $rootScope.show = false;
-        console.log(JSON.parse(result.data));
+        // console.log(JSON.parse(result.data));
         
-        $scope.authors = result.data.authors;
+        $scope.authors1 = result.data[0].authors;
+        $scope.authors2 = result.data[1].authors;
     })
 
 }])

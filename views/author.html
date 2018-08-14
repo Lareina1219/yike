@@ -2,16 +2,16 @@
 <!-- 主体 -->
 	<dl class="author">
 		<dt>本周推荐</dt>
-		<dd ng-repeat="author in authors">
+		<dd ng-repeat="auth1 in authors1">
 			<div class="avatar">
-				<img ng-src="{{author.avatar.url}}" >
+				<img ng-src="{{auth1.avatar}}" >
 			</div>
 			<div class="info">
-				<h5>{{author.name}}</h5>
-				<p>{{author.alt}}</p>
+				<h5>{{auth1.name}}</h5>
+				<p>{{auth1.alt}}</p>
 			</div>
 		</dd>
-<!-- 		<dd>
+	<!-- 	<dd>
 			<div class="avatar">
 				<img src="./uploads/avatar_2.png" alt="">
 			</div>
@@ -37,18 +37,18 @@
 				<h5>深焦</h5>
 				<p>我们在全世界和你看电影</p>
 			</div>
-		</dd>
+		</dd> -->
 		<dt>热门作者</dt>
-		<dd>
+		<dd ng-repeat="auth2 in authors2">
 			<div class="avatar">
-				<img src="./uploads/avatar_3.png" alt="">
+				<img src="{{auth2.avatar}}">
 			</div>
 			<div class="info">
-				<h5>风行水上</h5>
-				<p>本名高军，画家</p>
+				<h5>{{auth2.name}}</h5>
+				<p>{{auth2.alt}}</p>
 			</div>
 		</dd>
-		<dd>
+	<!-- 	<dd>
 			<div class="avatar">
 				<img src="./uploads/avatar_2.png" alt="">
 			</div>
